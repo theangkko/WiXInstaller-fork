@@ -1,10 +1,21 @@
 ﻿
 <!-- TODO 1/5: Set these two values (make a new Guid for the ProductUpgradeCode)  -->
-<?define ProductVersion = "1.0.1"?>
+<?define ProductVersion = "1.0.0.0"?>
 <?define ProductUpgradeCode = "{697DC734-59CD-43DB-BD0B-959CB783527F}"?>
 
-<Wix xmlns="http://wixtoolset.org/schemas/v4/wxs" xmlns:netfx="http://wixtoolset.org/schemas/v4/wxs/netfx" xmlns:ui="http://wixtoolset.org/schemas/v4/wxs/ui">
-  <Package Name="!(loc.ProductName)" Language="!(loc.LANG)" Version="$(var.ProductVersion)" Manufacturer="!(loc.ProductManufacturer)" UpgradeCode="$(var.ProductUpgradeCode)" InstallerVersion="200" Scope="perUser"><SummaryInformation Manufacturer="!(loc.ProductManufacturer)" Description="!(loc.ProductDescription)" />
+<Wix xmlns="http://wixtoolset.org/schemas/v4/wxs" 
+	 xmlns:netfx="http://wixtoolset.org/schemas/v4/wxs/netfx" 
+	 xmlns:ui="http://wixtoolset.org/schemas/v4/wxs/ui">
+	
+  <Package Name="!(loc.ProductName)" 
+		   Language="!(loc.LANG)" 
+		   Version="$(var.ProductVersion)" 
+		   Manufacturer="!(loc.ProductManufacturer)" 
+		   UpgradeCode="$(var.ProductUpgradeCode)" 
+		   InstallerVersion="200" 
+		   Scope="perUser">
+	  
+	  <SummaryInformation Manufacturer="!(loc.ProductManufacturer)" Description="!(loc.ProductDescription)" />
     
     <MediaTemplate EmbedCab="yes" />
     <MajorUpgrade Schedule="afterInstallInitialize" DowngradeErrorMessage="A newer version of [ProductName] is already installed." AllowSameVersionUpgrades="yes" />
@@ -77,7 +88,16 @@
       <Custom Action="Action_UnRegisterAddIn" After="Action_UnRegisterAddIn.SetProperty" Condition="Installed AND NOT UPGRADINGPRODUCTCODE" />
     </AdminExecuteSequence>
 
-  
+
+
+
+	  <!-- for Directory setting
+	  System6432Folder
+	  CommonFiles6432Folder   
+	  ProgramFiles6432Folder // 32bit - ProgramFilesFolder, c:\Program Files (x86)
+	                         // 64bit - ProgramFilesFolder, c:\Program Files
+	  -->
+	  
       <StandardDirectory Id="ProgramFilesFolder">
         <Directory Id="COMPANYDIR" Name="!(loc.ProductManufacturer)" />
       </StandardDirectory>
@@ -101,7 +121,7 @@
         <RegistryValue Root="HKCU" Key="Software\!(loc.ProductManufacturer)\!(loc.ProductNameNoSpace)" Name="Xll32Bit" Value="AddIns" KeyPath="yes" Type="string" />
 
         <!-- TODO 3/5: Set the Source path to the 32-bit xll location -->
-        <File Id="EXCELXLL32PACKED.XLL" Name="!(loc.ProductNameNoSpace)32.xll" Source="C:\Work\GitHub\govert\Test-WiXInstaller\Source\Test\bin\Debug\net472\publish\Test-AddIn-packed.xll">
+        <File Id="EXCELXLL32PACKED.XLL" Name="!(loc.ProductNameNoSpace)32.xll" Source="..\Test\bin\Debug\net472\publish\Test-AddIn-packed.xll">
           <netfx:NativeImage Id="ngen_32Xll" Platform="32bit" Priority="0" />
         </File>
       </Component>
@@ -110,7 +130,7 @@
         <RegistryValue Root="HKCU" Key="Software\!(loc.ProductManufacturer)\!(loc.ProductNameNoSpace)" Name="Xll64Bit" Value="AddIns" KeyPath="yes" Type="string" />
         
         <!-- TODO 5/5: Set the Source path to the 32-bit xll location -->
-        <File Id="EXCELXLL64PACKED.XLL" Name="!(loc.ProductNameNoSpace)64.xll" Source="C:\Work\GitHub\govert\Test-WiXInstaller\Source\Test\bin\Debug\net472\publish\Test-AddIn64-packed.xll">
+        <File Id="EXCELXLL64PACKED.XLL" Name="!(loc.ProductNameNoSpace)64.xll" Source="..\Test\bin\Debug\net472\publish\Test-AddIn64-packed.xll">
           <netfx:NativeImage Id="ngen_64Xll" Platform="64bit" Priority="0" />
         </File>
         
