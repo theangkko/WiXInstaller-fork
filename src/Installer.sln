@@ -5,7 +5,7 @@ VisualStudioVersion = 17.5.33516.290
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "InstallerCA", "InstallerCA\InstallerCA.csproj", "{F135D7B8-747C-4C4F-A9FC-1F3A25FBD403}"
 EndProject
-Project("{B7DD6F7E-DEF8-4E67-B5B7-07EF123DB6F0}") = "ExcelAddInDeploy", "ExcelAddInDeploy\ExcelAddInDeploy.wixproj", "{9787F6FE-2779-410B-B4EF-A04D2C6C7EEA}"
+Project("{B7DD6F7E-DEF8-4E67-B5B7-07EF123DB6F0}") = "ExcelAddInMSI", "ExcelAddInMSI\ExcelAddInMSI.wixproj", "{9787F6FE-2779-410B-B4EF-A04D2C6C7EEA}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Test", "Test\Test.csproj", "{95690D96-9DFD-4E02-AD90-BEC50017767D}"
 EndProject

@@ -10,6 +10,6 @@
     <PackageReference Include="WixToolset.Bal.wixext" Version="4.0.0" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\ExcelAddInDeploy\ExcelAddInDeploy.wixproj" />
+    <ProjectReference Include="..\ExcelAddInMSI\ExcelAddInMSI.wixproj" />
   </ItemGroup>
 </Project>
